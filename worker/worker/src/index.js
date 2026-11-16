@@ -9,7 +9,11 @@
  */
 
 export default {
-	async fetch(request, env, ctx) {
-		return new Response("Hello World!");
-	},
+  async fetch(request, env, ctx) {
+    if (request.method !== "POST") {
+      return new Response("Only POST is accepted.", { status: 405 });
+    }
+
+    return new Response("Got a POST.");
+  },
 };
