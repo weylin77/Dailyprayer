@@ -13,8 +13,15 @@ export default {
     if (request.method !== "POST") {
       return new Response("Only POST is accepted.", { status: 405 });
     }
-    const body = await request.json()
+    let body;
+    try {
+      body = await request.json()
+    } catch (error) {
+      return new Response("Only valid JSON is accepted.", {status: 400});
+      
+    }
 
     return Response.json(body);
+
   },
 };
