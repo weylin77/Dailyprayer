@@ -23,8 +23,8 @@ export default {
     if (
       body === null||
       typeof body.message !== "string"||
-      body.message.length < 1|| 
-      body.message.length > 1000 
+      body.message.length > 1|| 
+      body.message.length < 1000 
     ){
       return Response.json({ error: "message must be between 1 and 1000 characters"}, {status:400});
     }
